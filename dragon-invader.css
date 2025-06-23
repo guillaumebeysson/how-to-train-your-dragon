@@ -74,8 +74,15 @@ canvas {
 }
 
 @media (max-width: 768px) {
+    body {
+        display: block;
+        height: 100vh;
+        overflow: hidden;
+    }
+
     canvas {
         width: 100vw;
+        height: 70vh;
     }
 
 }

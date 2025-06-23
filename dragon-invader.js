@@ -11,13 +11,18 @@ const scoreElement = document.getElementById("score");
 const speedElement = document.getElementById("speed");
 
 let score = 0;
-let enemySpeed = 2;
+let enemySpeed = 1;
 
+if (window.innerWidth < 768) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+const scale = canvas.height / 600;
 const dragon = {
-    x: canvas.width / 2 - 40,
-    y: canvas.height - 80,
-    width: window.innerWidth < 768 ? 80 : 80,
-    height: window.innerWidth < 768 ? 80 : 80,
+    x: canvas.width / 2 - (50 * scale) / 2,
+    y: canvas.height - 50 * scale - 10,
+    width: 50 * scale,
+    height: 50 * scale,
     speed: 5,
     movingLeft: false,
     movingRight: false
@@ -56,13 +61,15 @@ function updateEnemies() {
 }
 
 function spawnEnemy() {
-    const isMobile = window.innerWidth < 768;
-    const width = isMobile ? 180 : 80;
-    const height = isMobile ? 180 : 80;
+    const scale = canvas.height / 600; // base 600px comme référence
+    const width = 80 * scale;
+    const height = 80 * scale;
     const x = Math.random() * (canvas.width - width);
     const y = -height;
+
     enemies.push({ x, y, width, height, speed: enemySpeed });
 }
+
 
 function checkCollisions() {
     fireballs.forEach((fb, fbIndex) => {
