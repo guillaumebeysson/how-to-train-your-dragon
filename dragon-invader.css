@@ -57,8 +57,14 @@ canvas {
 }
 
 @media (max-width: 768px) {
-
     canvas {
         width: 100vw;
+    }
+
+    #score {
+        text-align: center;
+        font-size: 24px;
+        margin-top: 10px;
+        color: #BE5319;
     }
 }
