@@ -121,29 +121,25 @@ const preventDefault = (e) => e.preventDefault();
 
 leftBtn.addEventListener("touchstart", (e) => {
     preventDefault(e);
-    leftInterval = setInterval(() => {
-        if (dragon.x > 0) dragon.x -= dragon.speed;
-    }, 30);
+    dragon.movingLeft = true;
 });
 
 leftBtn.addEventListener("touchend", (e) => {
     preventDefault(e);
-    clearInterval(leftInterval);
+    dragon.movingLeft = false;
 });
 
 rightBtn.addEventListener("touchstart", (e) => {
     preventDefault(e);
-    rightInterval = setInterval(() => {
-        if (dragon.x + dragon.width < canvas.width) dragon.x += dragon.speed;
-    }, 30);
+    dragon.movingRight = true;
 });
 
 rightBtn.addEventListener("touchend", (e) => {
     preventDefault(e);
-    clearInterval(rightInterval);
+    dragon.movingRight = false;
 });
 
-fireBtn.addEventListener("click", (e) => {
+fireBtn.addEventListener("touchstart", (e) => {
     e.preventDefault();
     shootFireball();
 });
