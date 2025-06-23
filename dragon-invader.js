@@ -8,6 +8,8 @@ const enemyImage = new Image();
 enemyImage.src = './assets/dragon-invader/Red_Death.webp';
 
 const scoreElement = document.getElementById("score");
+const speedElement = document.getElementById("speed");
+
 let score = 0;
 let enemySpeed = 2;
 
@@ -59,7 +61,7 @@ function spawnEnemy() {
     const height = isMobile ? 180 : 80;
     const x = Math.random() * (canvas.width - width);
     const y = -height;
-    enemies.push({ x, y, width, height, speed: 2 });
+    enemies.push({ x, y, width, height, speed: enemySpeed });
 }
 
 function checkCollisions() {
@@ -78,6 +80,7 @@ function checkCollisions() {
 
                 if (score % 100 === 0) {
                     enemySpeed += 1;
+                    speedElement.textContent = `Vitesse: ${enemySpeed}`;
                 }
             }
         });

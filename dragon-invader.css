@@ -35,6 +35,12 @@ canvas {
     background-color: #BE5319;
 }
 
+#speed {
+    text-align: center;
+    font-size: 18px;
+    color: white;
+}
+
 /* Mobile controls */
 .mobile-controls {
     position: fixed;
