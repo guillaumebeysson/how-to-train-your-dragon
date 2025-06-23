@@ -168,6 +168,24 @@ fireBtn.addEventListener("touchstart", (e) => {
     shootFireball();
 });
 
+// 📱 Contrôle par inclinaison (gyroscope)
+if (window.DeviceOrientationEvent) {
+    window.addEventListener("deviceorientation", (event) => {
+        const gamma = event.gamma; // gamma = inclinaison gauche/droite en degrés
+
+        if (gamma < -10) {
+            dragon.movingLeft = true;
+            dragon.movingRight = false;
+        } else if (gamma > 10) {
+            dragon.movingRight = true;
+            dragon.movingLeft = false;
+        } else {
+            dragon.movingLeft = false;
+            dragon.movingRight = false;
+        }
+    });
+}
+
 // 🚀 Start
 setInterval(spawnEnemy, 1500);
 gameLoop();
