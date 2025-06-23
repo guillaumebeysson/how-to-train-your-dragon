@@ -9,6 +9,7 @@ enemyImage.src = './assets/dragon-invader/Red_Death.webp';
 
 const scoreElement = document.getElementById("score");
 let score = 0;
+let enemySpeed = 2;
 
 const dragon = {
     x: canvas.width / 2 - 40,
@@ -74,6 +75,10 @@ function checkCollisions() {
                 enemies.splice(eIndex, 1);
                 score += 10;
                 scoreElement.textContent = `Score : ${score}`;
+
+                if (score % 100 === 0) {
+                    enemySpeed += 1;
+                }
             }
         });
     });
