@@ -54,4 +54,9 @@ canvas {
     .mobile-controls {
         display: none;
     }
+
+    canvas {
+        width: 100vw;
+        height: 75vh;
+    }
 }
