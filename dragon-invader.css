@@ -24,6 +24,17 @@ canvas {
     height: auto;
 }
 
+#score {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+    color: white;
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #BE5319;
+}
+
 /* Mobile controls */
 .mobile-controls {
     position: fixed;
@@ -61,10 +72,4 @@ canvas {
         width: 100vw;
     }
 
-    #score {
-        text-align: center;
-        font-size: 24px;
-        margin-top: 10px;
-        color: #BE5319;
-    }
 }
