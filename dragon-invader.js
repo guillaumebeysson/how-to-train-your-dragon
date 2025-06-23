@@ -1,6 +1,8 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+const fireSound = new Audio('./assets/dragon-invader/laser.mp3');
+
 const dragonImage = new Image();
 dragonImage.src = './assets/dragon-invader/dragon-invader-fighter.png';
 
@@ -95,6 +97,8 @@ function checkCollisions() {
 }
 
 function shootFireball() {
+    fireSound.currentTime = 0;
+    fireSound.play();
     fireballs.push({
         x: dragon.x + dragon.width / 2,
         y: dragon.y,

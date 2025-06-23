@@ -83,6 +83,8 @@ canvas {
     canvas {
         width: 100vw;
         height: 70vh;
+        border: none;
+        border-bottom: solid 3px #BE5319;
     }
 
 }
