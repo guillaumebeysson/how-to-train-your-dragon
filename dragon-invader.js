@@ -10,8 +10,8 @@ enemyImage.src = './assets/dragon-invader/Red_Death.webp';
 const dragon = {
     x: canvas.width / 2 - 25,
     y: canvas.height - 60,
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     speed: 5,
     movingLeft: false,
     movingRight: false
@@ -50,8 +50,8 @@ function updateEnemies() {
 }
 
 function spawnEnemy() {
-    const width = 70;
-    const height = 70;
+    const width = 40;
+    const height = 40;
     const x = Math.random() * (canvas.width - width);
     enemies.push({ x, y: 0, width, height, speed: 2 });
 }
@@ -117,23 +117,36 @@ const fireBtn = document.getElementById("fire-btn");
 
 let leftInterval, rightInterval;
 
-leftBtn.addEventListener("touchstart", () => {
+const preventDefault = (e) => e.preventDefault();
+
+leftBtn.addEventListener("touchstart", (e) => {
+    preventDefault(e);
     leftInterval = setInterval(() => {
         if (dragon.x > 0) dragon.x -= dragon.speed;
     }, 30);
 });
 
-leftBtn.addEventListener("touchend", () => clearInterval(leftInterval));
+leftBtn.addEventListener("touchend", (e) => {
+    preventDefault(e);
+    clearInterval(leftInterval);
+});
 
-rightBtn.addEventListener("touchstart", () => {
+rightBtn.addEventListener("touchstart", (e) => {
+    preventDefault(e);
     rightInterval = setInterval(() => {
         if (dragon.x + dragon.width < canvas.width) dragon.x += dragon.speed;
     }, 30);
 });
 
-rightBtn.addEventListener("touchend", () => clearInterval(rightInterval));
+rightBtn.addEventListener("touchend", (e) => {
+    preventDefault(e);
+    clearInterval(rightInterval);
+});
 
-fireBtn.addEventListener("click", shootFireball);
+fireBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    shootFireball();
+});
 
 // 🚀 Start
 setInterval(spawnEnemy, 1500);
