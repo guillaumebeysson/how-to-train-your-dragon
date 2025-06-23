@@ -54,9 +54,11 @@ canvas {
     .mobile-controls {
         display: none;
     }
+}
+
+@media (max-width: 768px) {
 
     canvas {
         width: 100vw;
-        height: 75vh;
     }
 }

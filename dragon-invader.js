@@ -10,8 +10,8 @@ enemyImage.src = './assets/dragon-invader/Red_Death.webp';
 const dragon = {
     x: canvas.width / 2 - 40,
     y: canvas.height - 80,
-    width: window.innerWidth < 768 ? 80 : 50,
-    height: window.innerWidth < 768 ? 80 : 50,
+    width: window.innerWidth < 768 ? 80 : 80,
+    height: window.innerWidth < 768 ? 80 : 80,
     speed: 5,
     movingLeft: false,
     movingRight: false
@@ -51,8 +51,8 @@ function updateEnemies() {
 
 function spawnEnemy() {
     const isMobile = window.innerWidth < 768;
-    const width = isMobile ? 70 : 40;
-    const height = isMobile ? 70 : 40;
+    const width = isMobile ? 150 : 50;
+    const height = isMobile ? 150 : 50;
     const x = Math.random() * (canvas.width - width);
     enemies.push({ x, y: 0, width, height, speed: 2 });
 }
