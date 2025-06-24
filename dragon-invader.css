@@ -66,9 +66,27 @@ canvas {
     user-select: none;
 }
 
+.control-toggle {
+    text-align: center;
+}
+
+.control-toggle button {
+    padding: 10px 20px;
+    background-color: #BE5319;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 26px;
+    cursor: pointer;
+}
+
 /* Cache les boutons sur écran large */
 @media (min-width: 768px) {
     .mobile-controls {
+        display: none;
+    }
+
+    .control-toggle {
         display: none;
     }
 }

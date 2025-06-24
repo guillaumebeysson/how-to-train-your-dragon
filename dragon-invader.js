@@ -12,6 +12,9 @@ enemyImage.src = './assets/dragon-invader/Red_Death.webp';
 const scoreElement = document.getElementById("score");
 const speedElement = document.getElementById("speed");
 
+let useGyro = false;
+const toggleControlBtn = document.getElementById("toggle-control-btn");
+
 let score = 0;
 let enemySpeed = 1;
 
@@ -171,7 +174,9 @@ fireBtn.addEventListener("touchstart", (e) => {
 // 📱 Contrôle par inclinaison (gyroscope)
 if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", (event) => {
-        const gamma = event.gamma; // gamma = inclinaison gauche/droite en degrés
+        if (!useGyro) return;
+
+        const gamma = event.gamma;
 
         if (gamma < -10) {
             dragon.movingLeft = true;
@@ -185,6 +190,12 @@ if (window.DeviceOrientationEvent) {
         }
     });
 }
+
+toggleControlBtn.addEventListener("click", () => {
+    useGyro = !useGyro;
+    toggleControlBtn.textContent = useGyro ? "🔄" : "↔️";
+});
+
 
 // 🚀 Start
 setInterval(spawnEnemy, 1500);
