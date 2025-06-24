@@ -12,9 +12,6 @@ enemyImage.src = './assets/dragon-invader/Red_Death.webp';
 const scoreElement = document.getElementById("score");
 const speedElement = document.getElementById("speed");
 
-let useGyro = false;
-const toggleControlBtn = document.getElementById("toggle-control-btn");
-
 let score = 0;
 let enemySpeed = 1;
 
@@ -146,6 +143,27 @@ const fireBtn = document.getElementById("fire-btn");
 
 const preventDefault = (e) => e.preventDefault();
 
+let useGyro = false;
+document.addEventListener("DOMContentLoaded", () => {
+    const toggleControlBtn = document.getElementById("toggle-control-btn");
+    const settingsBtn = document.getElementById("settings-btn");
+    const settingsModal = document.getElementById("settings-modal");
+    const closeSettings = document.getElementById("close-settings");
+
+    toggleControlBtn.addEventListener("click", () => {
+        useGyro = !useGyro;
+        toggleControlBtn.textContent = useGyro ? "🔄" : "↔️";
+    });
+
+    settingsBtn.addEventListener("click", () => {
+        settingsModal.classList.remove("hidden");
+    });
+
+    closeSettings.addEventListener("click", () => {
+        settingsModal.classList.add("hidden");
+    });
+});
+
 leftBtn.addEventListener("touchstart", (e) => {
     preventDefault(e);
     dragon.movingLeft = true;
@@ -171,7 +189,6 @@ fireBtn.addEventListener("touchstart", (e) => {
     shootFireball();
 });
 
-// 📱 Contrôle par inclinaison (gyroscope)
 if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", (event) => {
         if (!useGyro) return;
@@ -190,12 +207,6 @@ if (window.DeviceOrientationEvent) {
         }
     });
 }
-
-toggleControlBtn.addEventListener("click", () => {
-    useGyro = !useGyro;
-    toggleControlBtn.textContent = useGyro ? "🔄" : "↔️";
-});
-
 
 // 🚀 Start
 setInterval(spawnEnemy, 1500);

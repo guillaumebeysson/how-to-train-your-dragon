@@ -10,13 +10,25 @@
 </head>
 
 <body>
+    <!-- ⚙️ Bouton paramètres -->
+    <button id="settings-btn" class="settings-btn">⚙️</button>
+
+    <!-- 🔧 Menu paramètres -->
+    <div id="settings-modal" class="settings-modal hidden">
+        <div class="settings-content">
+            <h2>Paramètres</h2>
+            <label>
+                <span>Mode de contrôle :</span>
+                <button id="toggle-control-btn">↔️</button>
+            </label>
+            <button id="close-settings">Fermer</button>
+        </div>
+    </div>
+
     <div class="game-container">
         <canvas id="gameCanvas" width="800" height="600"></canvas>
         <div id="score">Score : 0</div>
         <div id="speed">Vitesse: 1</div>
-        <div class="control-toggle">
-            <button id="toggle-control-btn">↔️</button>
-        </div>
     </div>
 
     <!-- Boutons mobiles -->
